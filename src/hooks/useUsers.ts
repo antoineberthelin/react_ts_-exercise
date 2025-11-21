@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react'
 import { User } from '../types'
 
-// TODO: Implement the hook
 export function useUsers() {
-  // TODO: users: User[]
-  // TODO: loading: boolean
-  // TODO: error: string | null
+  const [users, setUsers] = useState<User[]>([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  // TODO: fetch in useEffect
+  useEffect(() => {
+    setLoading(true)
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => setUsers(data))
+      .catch(() => setError('Failed to fetch users'))
+      .finally(() => setLoading(false))
+  }, [])
 
-  return {
-    users: [],
-    loading: false,
-    error: null
-  }
+  return { users, loading, error }
 }
