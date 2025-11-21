@@ -38,4 +38,4 @@ Build a small React application using TypeScript. This exercise tests:
 - src/hooks/useUsers.ts
 - src/App.tsx
 
-The `solution` folder contains a complete working example.
+The `solution` branch contains a complete working example.
